@@ -128,7 +128,7 @@ export class RealtimeConnectionNegotiator {
       const offer = await this._peerConnection.createOffer();
       await this._peerConnection.setLocalDescription(offer);
 
-      await new Promise((resolve) => setTimeout(resolve, 10000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("All set.");
       // await Promise.all([setLocalDescriptionPromise, gatherStatePromise]);
       console.log("Not reached...");
