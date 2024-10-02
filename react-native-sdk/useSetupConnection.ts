@@ -13,7 +13,7 @@ export function useSetupConnection() {
       });
 
       if (stream) {
-        stream.getVideoTracks().map((track) => {
+        stream.getTracks().map((track) => {
           console.log("Tracks", track);
           if (!track.enabled) {
             track.enabled = true;

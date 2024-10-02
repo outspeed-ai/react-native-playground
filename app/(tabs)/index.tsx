@@ -8,17 +8,19 @@ registerGlobals();
 
 export default function HomeScreen() {
   const { stream, handleOnMount } = useSetupConnection();
-  const { connect, remoteTrack } = useWebRTC();
+  const { connect, remoteTrack, dataChannel, status } = useWebRTC();
 
-  console.log("Connection", remoteTrack);
+  const sendMessage = React.useCallback(() => {
+    dataChannel.send(JSON.stringify({ type: "message", data: "Hello!" }));
+  }, [dataChannel]);
 
   return (
-    <SafeAreaView>
-      <Text>Hello World, this is working</Text>
-      <Text>Hello World, this is working</Text>
-      <Text>Hello World, this is working</Text>
-      <Text>Hello World, this is working</Text>
-      <Text>Hello World, this is working</Text>
+    <SafeAreaView
+      style={{
+        display: "flex",
+        marginTop: 20,
+      }}
+    >
       {stream && (
         <RTCView
           streamURL={stream.toURL()}
@@ -37,9 +39,14 @@ export default function HomeScreen() {
           zOrder={0}
         />
       )}
-      <Text>Hello World, this is working last</Text>
+      <Text>Connection Status: {status}</Text>
       <Button title="Take permission" onPress={handleOnMount} />
-      {stream && <Button title="Connect" onPress={() => connect(stream)} />}
+      {dataChannel && status !== "connected" && (
+        <Button title="Send Hi" onPress={sendMessage} />
+      )}
+      {stream && status !== "connected" && (
+        <Button title="Connect" onPress={() => connect(stream)} />
+      )}
     </SafeAreaView>
   );
 }

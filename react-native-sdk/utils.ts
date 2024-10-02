@@ -8,11 +8,9 @@ export async function fetchWithRetry(
 ): Promise<Response> {
   for (let i = 0; i < retries; i++) {
     try {
-      console.log("Making request", url, options);
       // Attempt the fetch request
       const response = await fetch(url, options);
 
-      console.log("Inside retry", response);
       // If the response is ok (status in the range 200-299), return it
       if (response.ok) {
         return response;

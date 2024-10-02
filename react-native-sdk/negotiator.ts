@@ -172,7 +172,7 @@ export class RealtimeConnectionNegotiator {
         );
       }
 
-      const offerURL = "https://79zhb27t-8080.asse.devtunnels.ms/offer";
+      const offerURL = "http://192.168.11.12:8080/offer";
       // payload.address.replace(
       //   "0.0.0.0",
       //   "https://79zhb27t-8080.asse.devtunnels.ms"
@@ -221,8 +221,6 @@ export class RealtimeConnectionNegotiator {
           "audio",
           this._config.codec.audio
         );
-
-        console.log("Modidfsklaj", this._config.codec.audio);
       }
 
       if (
