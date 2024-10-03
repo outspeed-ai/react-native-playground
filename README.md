@@ -5,7 +5,7 @@
 1. Set up Android Studio:
    1. [Install Android Studio](https://developer.android.com/studio/install)
    2. [Set up Android Studio Emulator](https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studio)
-2. Export `ANDROID_HOME`.
+2. Export `ANDROID_HOME`. See the instructions here: https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studio (Step 6)
 3. Run `pnpm install`.
 4. Start your backend server.
 5. Connect your Android device to your Mac.
@@ -18,3 +18,9 @@
 12. Depending on the backend toggle audio and video checkbox.
 13. Click "Take Permission"
 14. Click "Connect"
+
+
+If there is Un-authorization error, then follow the following steps:
+1. Create and account at https://expo.dev
+2. npm install -g eas-cli
+3. eas login
