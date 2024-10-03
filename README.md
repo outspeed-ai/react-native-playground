@@ -4,7 +4,6 @@
 
 1. Set up Android Studio:
    1. [Install Android Studio](https://developer.android.com/studio/install)
-   2. [Set up Android Studio Emulator](https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studio)
 2. Export `ANDROID_HOME`. See the instructions here: https://docs.expo.dev/workflow/android-studio-emulator/#set-up-android-studio (Step 6)
 3. Run `pnpm install`.
 4. Start your backend server.
