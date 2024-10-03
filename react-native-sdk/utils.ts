@@ -1,5 +1,3 @@
-import { RTCSessionDescription } from "react-native-webrtc";
-
 export async function fetchWithRetry(
   url: string,
   options: RequestInit = {},

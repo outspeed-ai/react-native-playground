@@ -8,6 +8,10 @@ export function useSetupConnection() {
   const handleOnMount = React.useCallback(
     async (hasAudio: boolean, hasVideo: boolean) => {
       try {
+        const devices = await mediaDevices.enumerateDevices();
+
+        console.log("Devices", devices);
+
         const stream = await mediaDevices.getUserMedia({
           video: hasVideo,
           audio: hasAudio,
