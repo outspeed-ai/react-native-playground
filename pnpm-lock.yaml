@@ -11,6 +11,9 @@ dependencies:
   '@expo/vector-icons':
     specifier: ^14.0.2
     version: 14.0.2
+  '@react-native-community/checkbox':
+    specifier: ^0.5.17
+    version: 0.5.17(react-native@0.74.5)(react@18.2.0)
   '@react-navigation/native':
     specifier: ^6.0.2
     version: 6.0.2(react-native@0.74.5)(react@18.2.0)
@@ -2479,6 +2482,20 @@ packages:
       '@babel/runtime': 7.25.6
       '@radix-ui/react-compose-refs': 1.0.0(react@18.2.0)
       react: 18.2.0
+    dev: false
+
+  /@react-native-community/checkbox@0.5.17(react-native@0.74.5)(react@18.2.0):
+    resolution: {integrity: sha512-ZZx/eOH3SIxBg+hvA2zRd7lX5zPQEWcZU8C8Dn7WLdpJkiTkPmIUDFHWrmzxCnwZcyoD+BIt6gUZPKGGb9WmeQ==}
+    peerDependencies:
+      react: '*'
+      react-native: '>= 0.62'
+      react-native-windows: '>=0.62'
+    peerDependenciesMeta:
+      react-native-windows:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.20.2)(@babel/preset-env@7.25.4)(@types/react@18.2.45)(react@18.2.0)
     dev: false
 
   /@react-native-community/cli-clean@13.6.9:
