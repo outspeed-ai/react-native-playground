@@ -5,26 +5,29 @@ import { mediaDevices, MediaStream } from "react-native-webrtc";
 export function useSetupConnection() {
   const [stream, setStream] = React.useState<MediaStream | null>(null);
 
-  const handleOnMount = React.useCallback(async () => {
-    try {
-      const stream = await mediaDevices.getUserMedia({
-        video: true,
-        audio: true,
-      });
-
-      if (stream) {
-        stream.getTracks().map((track) => {
-          console.log("Tracks", track);
-          if (!track.enabled) {
-            track.enabled = true;
-          }
+  const handleOnMount = React.useCallback(
+    async (hasAudio: boolean, hasVideo: boolean) => {
+      try {
+        const stream = await mediaDevices.getUserMedia({
+          video: hasVideo,
+          audio: hasAudio,
         });
-        setStream(stream);
+
+        if (stream) {
+          stream.getTracks().map((track) => {
+            console.log("Tracks", track);
+            if (!track.enabled) {
+              track.enabled = true;
+            }
+          });
+          setStream(stream);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+    },
+    []
+  );
 
   return {
     stream,

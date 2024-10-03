@@ -20,46 +20,46 @@ export function useWebRTC() {
     }
   }, []);
 
-  const connect = React.useCallback(async (stream: MediaStream) => {
-    const peerConnection = new RTCPeerConnection();
-    peerConnection.addEventListener("connectionstatechange", (state) =>
-      console.log("Peer connection callback", state)
-    );
-    console.log("Peer connection state", peerConnection.connectionState);
-    stream.getTracks().forEach((track) => {
-      console.log("Track", track.kind);
-      // if (track.kind.includes("audio")) {
-      console.log("add audio track");
-      peerConnection.addTrack(track, stream);
-      // }
-    });
+  const connect = React.useCallback(
+    async (functionURL: string, stream: MediaStream) => {
+      const peerConnection = new RTCPeerConnection();
+      peerConnection.addEventListener("connectionstatechange", (state) =>
+        console.log("Peer connection callback", state)
+      );
+      console.log("Peer connection state", peerConnection.connectionState);
+      stream.getTracks().forEach((track) => {
+        console.log("Track", track.kind);
+        console.log("add audio track");
+        peerConnection.addTrack(track, stream);
+      });
 
-    peerConnection.addEventListener("track", _handleOnTrack);
-    const dc = peerConnection.createDataChannel("chat", { ordered: true });
+      peerConnection.addEventListener("track", _handleOnTrack);
+      const dc = peerConnection.createDataChannel("chat", { ordered: true });
 
-    setDataChannel(dc);
-    setStatus("connecting");
-    const negotiator = new RealtimeConnectionNegotiator(peerConnection, {
-      logger: console,
-      // functionURL: "https://79zhb27t-8080.asse.devtunnels.ms",
-      functionURL: "http://192.168.11.12:8080",
-      codec: {
-        audio: "PCMU/8000",
-      },
-    });
-    console.log("Starting..");
-    const response = await negotiator.negotiateAndUpdatePeerConnection();
-    console.log("Ending...", response);
-    console.log("Peer connection state", peerConnection.connectionState);
-    if (response.ok) {
-      setStatus("connected");
-      InCallManager.setSpeakerphoneOn(true);
-      setConnection(peerConnection);
-    } else {
-      setStatus("connected");
-      console.log("Error", response);
-    }
-  }, []);
+      setDataChannel(dc);
+      setStatus("connecting");
+      const negotiator = new RealtimeConnectionNegotiator(peerConnection, {
+        logger: console,
+        functionURL,
+        codec: {
+          audio: "PCMU/8000",
+        },
+      });
+      console.log("Starting..");
+      const response = await negotiator.negotiateAndUpdatePeerConnection();
+      console.log("Ending...", response);
+      console.log("Peer connection state", peerConnection.connectionState);
+      if (response.ok) {
+        setStatus("connected");
+        InCallManager.setSpeakerphoneOn(true);
+        setConnection(peerConnection);
+      } else {
+        setStatus("failed");
+        console.log("Error", response);
+      }
+    },
+    []
+  );
 
   return {
     connection,

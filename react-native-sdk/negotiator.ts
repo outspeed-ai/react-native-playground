@@ -149,7 +149,7 @@ export class RealtimeConnectionNegotiator {
    */
   private async _getOfferURL(functionURL: string): Promise<TResponse> {
     try {
-      console.log("Getting offer url");
+      console.log("Getting offer url", functionURL);
       const response = await fetchWithRetry(functionURL, undefined, 2);
       console.log("Response", response);
       const payload = (await response.json()) as unknown;
@@ -172,7 +172,7 @@ export class RealtimeConnectionNegotiator {
         );
       }
 
-      const offerURL = "http://192.168.11.12:8080/offer";
+      const offerURL = `${functionURL.replace(/\/$/, "")}/offer`;
       // payload.address.replace(
       //   "0.0.0.0",
       //   "https://79zhb27t-8080.asse.devtunnels.ms"
