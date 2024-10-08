@@ -45,12 +45,12 @@ export default function HomeScreen() {
         marginTop: 50,
       }}
     >
-      <Text>Function URL</Text>
+      <Text>Offer URL</Text>
       <TextInput
         style={{ borderColor: "blue", borderWidth: 1 }}
         value={offerURL}
         onChangeText={onOfferURLChange}
-        placeholder="Enter function url here"
+        placeholder="Enter offer url here"
       />
       <Text>Audio</Text>
       <CheckBox
