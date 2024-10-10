@@ -2,7 +2,7 @@ import React from "react";
 import { Text, SafeAreaView, Button, TextInput } from "react-native";
 import { registerGlobals } from "react-native-webrtc";
 import CheckBox from "@react-native-community/checkbox";
-import { useWebRTC, RealtimePlayer } from "@outspeed/react-native-sdk";
+import { useWebRTC, RealtimePlayer } from "@outspeed/react-native";
 import { ConsoleLogger } from "@outspeed/core/dist/Logger";
 import { createConfig } from "@outspeed/core/dist/create-config";
 
