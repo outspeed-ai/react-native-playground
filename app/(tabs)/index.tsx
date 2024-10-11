@@ -5,6 +5,8 @@ import CheckBox from "@react-native-community/checkbox";
 import { useWebRTC, RealtimePlayer } from "@outspeed/react-native";
 import { ConsoleLogger } from "@outspeed/core/dist/Logger";
 import { createConfig } from "@outspeed/core/dist/create-config";
+import InCallManager from "react-native-incall-manager";
+
 
 registerGlobals();
 
@@ -26,6 +28,7 @@ export default function HomeScreen() {
   );
 
   const createConfigAndConnect = React.useCallback(async () => {
+    InCallManager.setSpeakerphoneOn(true);
     const config = createConfig({
       offerURL,
       audioDeviceId: hasAudio ? "default" : "",
