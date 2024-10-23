@@ -16,7 +16,7 @@ dependencies:
     version: 1.0.2
   '@outspeed/react-native':
     specifier: file:../outspeed-js/packages/react-native
-    version: file:../outspeed-js/packages/react-native(@outspeed/core@1.0.2)(react-dom@18.2.0)(react-native-incall-manager@4.2.0)(react-native-webrtc@124.0.4)(react-native@0.74.5)(react@18.2.0)
+    version: file:../outspeed-js/packages/react-native(react-dom@18.2.0)(react-native-incall-manager@4.2.0)(react-native-webrtc@124.0.4)(react-native@0.74.5)(react@18.2.0)
   '@react-native-community/checkbox':
     specifier: ^0.5.17
     version: 0.5.17(react-native@0.74.5)(react@18.2.0)
@@ -1719,7 +1719,7 @@ packages:
 
   /@expo/bunyan@4.0.1:
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {'0': node >=0.10.0}
+    engines: {node: '>=0.10.0'}
     dependencies:
       uuid: 8.3.2
     dev: false
@@ -9780,12 +9780,11 @@ packages:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: false
 
-  file:../outspeed-js/packages/react-native(@outspeed/core@1.0.2)(react-dom@18.2.0)(react-native-incall-manager@4.2.0)(react-native-webrtc@124.0.4)(react-native@0.74.5)(react@18.2.0):
+  file:../outspeed-js/packages/react-native(react-dom@18.2.0)(react-native-incall-manager@4.2.0)(react-native-webrtc@124.0.4)(react-native@0.74.5)(react@18.2.0):
     resolution: {directory: ../outspeed-js/packages/react-native, type: directory}
     id: file:../outspeed-js/packages/react-native
     name: '@outspeed/react-native'
     peerDependencies:
-      '@outspeed/core': workspace:^
       react: ^18.2.0
       react-dom: ^18.2.0
       react-native: ^0.75.3
