@@ -2,19 +2,19 @@ import React from "react";
 import { Text, SafeAreaView, Button, TextInput } from "react-native";
 import { registerGlobals } from "react-native-webrtc";
 import CheckBox from "@react-native-community/checkbox";
-import { useWebRTC, RealtimePlayer } from "@outspeed/react-native";
-import { ConsoleLogger } from "@outspeed/core/dist/Logger";
-import { createConfig } from "@outspeed/core/dist/create-config";
+import {
+  useWebRTC,
+  RealtimePlayer,
+  createConfig,
+  ConsoleLogger,
+} from "@outspeed/react-native";
 import InCallManager from "react-native-incall-manager";
-
 
 registerGlobals();
 
 export default function HomeScreen() {
-  const { connect, remoteTracks, dataChannel, connectionStatus } = useWebRTC();
-  const [offerURL, onOfferURLChange] = React.useState(
-    "http://192.168.11.12:8080/offer"
-  );
+  const { connect, remoteStreams, dataChannel, connectionStatus } = useWebRTC();
+  const [offerURL, onOfferURLChange] = React.useState("");
   const [hasAudio, setHasAudio] = React.useState(true);
   const [hasVideo, setHasVideo] = React.useState(false);
   const [message, setMessage] = React.useState("");
@@ -22,7 +22,7 @@ export default function HomeScreen() {
   const sendMessage = React.useCallback(
     (data: string) => {
       if (!dataChannel) return;
-      dataChannel.send(JSON.stringify({ type: "message", data }));
+      dataChannel.send(JSON.stringify({ type: "message", content: data }));
     },
     [dataChannel]
   );
@@ -68,8 +68,8 @@ export default function HomeScreen() {
         onValueChange={(newValue) => setHasVideo(newValue)}
       />
 
-      {remoteTracks[0] && (
-        <RealtimePlayer streamURL={remoteTracks[0].toURL()} />
+      {remoteStreams[0] && (
+        <RealtimePlayer streamURL={remoteStreams[0].toURL()} />
       )}
 
       <Text>Connection Status: {connectionStatus}</Text>

@@ -38,8 +38,7 @@
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
     "react-native-webrtc": "^124.0.4",
-    "@outspeed/react-native": "1.0.1",
-    "@outspeed/core": "1.0.2"
+    "@outspeed/react-native": "file:../outspeed-js/packages/react-native"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
