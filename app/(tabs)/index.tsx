@@ -14,7 +14,7 @@ registerGlobals();
 
 export default function HomeScreen() {
   const { connect, remoteStreams, dataChannel, connectionStatus } = useWebRTC();
-  const [offerURL, onOfferURLChange] = React.useState("");
+  const [functionURL, onFunctionURLChange] = React.useState("");
   const [hasAudio, setHasAudio] = React.useState(true);
   const [hasVideo, setHasVideo] = React.useState(false);
   const [message, setMessage] = React.useState("");
@@ -30,7 +30,7 @@ export default function HomeScreen() {
   const createConfigAndConnect = React.useCallback(async () => {
     InCallManager.setSpeakerphoneOn(true);
     const config = createConfig({
-      offerURL,
+      functionURL,
       audioDeviceId: hasAudio ? "default" : "",
       videoDeviceId: hasVideo ? "default" : "",
       logger: ConsoleLogger.getLogger(),
@@ -39,7 +39,7 @@ export default function HomeScreen() {
     connect({
       config,
     });
-  }, [offerURL, hasAudio, hasVideo, connect]);
+  }, [functionURL, hasAudio, hasVideo, connect]);
 
   return (
     <SafeAreaView
@@ -48,12 +48,12 @@ export default function HomeScreen() {
         marginTop: 50,
       }}
     >
-      <Text>Offer URL</Text>
+      <Text>Function URL</Text>
       <TextInput
         style={{ borderColor: "blue", borderWidth: 1 }}
-        value={offerURL}
-        onChangeText={onOfferURLChange}
-        placeholder="Enter offer url here"
+        value={functionURL}
+        onChangeText={onFunctionURLChange}
+        placeholder="Enter function url here"
       />
       <Text>Audio</Text>
       <CheckBox
